@@ -1,16 +1,6 @@
 <?php
 
-// session_start();
-// include_once ("admin/class/adminback.php");
-// $obj = new adminback();
-
-// $cata_info = $obj-> p_display_catagory();
-// $cataDatas = array();
-// while($data = mysqli_fetch_assoc($cata_info)){
-//     $cataDatas[]=$data;
-// }
-
-
+session_start();
 
 
 
@@ -63,18 +53,6 @@ include_once("includes/head.php");
             include_once("includes/slider_main.php")
             ?>
 
-            <!--Block 02: Banners-->
-
-
-
-            <!--Block 03: Product Tabs-->
-
-
-
-            <!--Block 06: Products-->
-
-            <!--Block 07: Brands-->
-
         </div>
     </div>
 
@@ -93,13 +71,13 @@ include_once("includes/head.php");
     include_once("includes/mobile_global.php")
     ?>
 
-
     <!-- Scroll Top Button -->
     <a class="btn-scroll-top"><i class="biolife-icon icon-left-arrow"></i></a>
 
     <?php
     include_once("includes/script.php")
     ?>
+
 </body>
 
 </html>
