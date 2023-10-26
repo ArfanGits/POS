@@ -7,7 +7,7 @@
                 <div class="media background-geen-01"></div>
                 <div class="text-content">
                     <p class="buttons">
-                        <a href="./all_product.php" class="btn btn-bold">Shop now</a>
+                        <a href="user_login.php" class="btn btn-bold">Shop now</a>
                     </p>
                 </div>
             </div>

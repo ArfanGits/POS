@@ -1,6 +1,6 @@
 <?php
-// $obj= new adminback();
-// $links = $obj->display_links();
+$obj = new adminback();
+$links = $obj->display_links();
 
 ?>
 
@@ -17,9 +17,14 @@
         <div class="top-bar right">
             <ul class="horizontal-menu">
                 <li><a href="user_login.php" class="login-link"><i class="biolife-icon icon-login"></i>
-
-                    </a>
-                </li>
+                        <?php
+                        if (isset($_SESSION['username'])) {
+                            echo $_SESSION['username'];
+                        } else {
+                            echo "Login";
+                        }
+                        ?>
+                    </a></li>
 
             </ul>
         </div>
