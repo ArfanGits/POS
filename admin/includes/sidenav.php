@@ -53,7 +53,7 @@
                     <li class=" ">
                         <a href="add_product.php">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert" style="font-weight: 400;">Add Prodcut</span>
+                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert" style="font-weight: 400;">Add Product</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>

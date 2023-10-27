@@ -1,21 +1,9 @@
 <?php
-session_start();
-include("admin/class/adminback.php");
-$obj = new adminback();
 
-$admin_id = $_SESSION['admin_id'];
-$admin_email = $_SESSION['admin_email'];
+// include("admin/class/adminback.php");
+// $obj = new adminback();
 
 
-if (empty($admin_id)) {
-    header("location:index.php");
-}
-
-if (isset($_GET['adminLogout'])) {
-    if ($_GET['adminLogout'] == "logout") {
-        $obj->admin_logout();
-    }
-}
 
 
 

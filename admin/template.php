@@ -1,8 +1,22 @@
 <?php
 
+session_start();
 include("class/adminback.php");
 $obj = new adminback();
 
+$admin_id = $_SESSION['admin_id'];
+$admin_email = $_SESSION['admin_email'];
+
+
+if (empty($admin_id)) {
+    header("location:index.php");
+}
+
+if (isset($_GET['adminLogout'])) {
+    if ($_GET['adminLogout'] == "logout") {
+        $obj->admin_logout();
+    }
+}
 ?>
 
 <?php
@@ -35,7 +49,7 @@ include("includes/head.php")
                         <?php include_once("includes/sidenav.php") ?>
 
 
-                       
+
                     </div>
                 </div>
             </div>
