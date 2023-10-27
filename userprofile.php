@@ -4,7 +4,6 @@ session_start();
 include_once("admin/class/adminback.php");
 $obj = new adminback();
 
-
 if (isset($_POST['user_login_btn'])) {
     $logmsg = $obj->user_login($_POST);
 }
@@ -15,7 +14,6 @@ $username = $_SESSION['username'];
 if (empty($userid)) {
     header("location:user_login.php");
 }
-
 
 if (isset($_GET['logout'])) {
     if ($_GET['logout'] == "logout") {

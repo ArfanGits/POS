@@ -82,7 +82,7 @@ include_once("includes/head.php");
                                 </p>
                                 <p class="wrap-btn">
                                     <input type="submit" value="Log In" name="user_login_btn" class="btn btn-success">
-                                    <a href="user_password_recover.php" class="link-to-help">Forgot your password</a>
+                                    <a href="user_password_recover.php" class="link-to-help"> Forgot your password?</a>
                                 </p>
                             </form>
                         </div>

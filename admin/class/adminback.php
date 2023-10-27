@@ -17,12 +17,38 @@ class  adminback
         }
     }
 
+    function admin_register($data)
+    {
+        $admin_name = $data['admin_name'];
+        $admin_email = $data['admin_email'];
+        $admin_pass = md5($data['admin_pass']);
+
+
+        $admin_check = "SELECT * FROM `admin` WHERE admin_name='$admin_name' or admin_email='$admin_email'";
+
+        $mysqli_result = mysqli_query($this->connection, $admin_check);
+
+        $row = mysqli_num_rows($mysqli_result);
+
+        if ($row == 1) {
+            $msg = "Admin email already exist";
+            return $msg;
+        } else {
+            $query = "INSERT INTO `admin`( `admin_name`,  `admin_email`, `admin_pass`) VALUES ('$admin_name','$admin_email','$admin_pass')";
+
+            if (mysqli_query($this->connection, $query)) {
+                $msg = "Your registration is done";
+                return $msg;
+            }
+        }
+    }
+
     function admin_login($data)
     {
         $admin_email = $data["admin_email"];
         $admin_pass = md5($data['admin_pass']);
 
-        $query = "SELECT * FROM `admin_info` WHERE admin_email = '$admin_email' AND admin_pass = '$admin_pass'";
+        $query = "SELECT * FROM `admin` WHERE admin_email = '$admin_email' AND admin_pass = '$admin_pass'";
 
         if (mysqli_query($this->connection, $query)) {
             $result = mysqli_query($this->connection, $query);
@@ -32,7 +58,6 @@ class  adminback
                 session_start();
                 $_SESSION['admin_id'] = $admin_info['admin_id'];
                 $_SESSION['admin_email'] = $admin_info['admin_email'];
-                $_SESSION['role'] = $admin_info['role'];
             } else {
                 $log_msg = "Email or password wrong";
                 return $log_msg;
@@ -44,7 +69,6 @@ class  adminback
     {
         unset($_SESSION['admin_id']);
         unset($_SESSION['admin_email']);
-        unset($_SESSION['role']);
         header("location:index.php");
         session_destroy();
     }
