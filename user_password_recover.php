@@ -4,40 +4,7 @@ session_start();
 include_once("admin/class/adminback.php");
 $obj = new adminback();
 
-if (isset($_SESSION['user_id'])) {
-    header("location:userprofile.php");
-}
 
-
-if (isset($_POST['u_pass_recover'])) {
-    $recover_email = $_POST['recover_email'];
-    $rec_row = $obj->user_password_recover($recover_email);
-
-    $num_row = mysqli_num_rows($rec_row);
-    $rec_msg = "";
-
-    if ($num_row > 0) {
-        $rec_result = mysqli_fetch_assoc($rec_row);
-
-        $rec_id = $rec_result['user_id'];
-        $rec_name = $rec_result['user_firstname'];
-        $rec_email = $rec_result['user_email'];
-        $rec_pass = $rec_result['user_password'];
-
-        $to_email = $rec_email;
-        $subject = "Recover Password From Mini Mart";
-        $body = "Dear {$rec_name}" . PHP_EOL . "Please visit this link to reset your password: http://localhost/POS/user_password_update.php?status=update&&id={$rec_id}" . PHP_EOL . "Thank you";
-        $headers = "From: khan.arfan07@gmail.com";
-
-        if (mail($to_email, $subject, $body, $headers)) {
-            $rec_msg = "Please check your email and reset password";
-        } else {
-            $rec_msg = "Email sending failed...";
-        }
-    } else {
-        $rec_msg = "Sorry !!! you have no account";
-    }
-}
 
 
 ?>
@@ -95,15 +62,14 @@ include_once("includes/head.php");
                     <!--Form Sign In-->
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="signin-container">
-                            <form action="" name="frm-login" method="post">
+                            <form action="reset_pass.php" name="frm-login" method="post">
                                 <p class="form-row">
                                     <label for="email">Email</label>
-                                    <input type="email" id="fid-name" name="recover_email" class="txt-input">
+                                    <input type="email" id="fid-name" name="user_email" class="txt-input">
                                 </p>
 
                                 <p class="wrap-btn">
-                                    <input type="submit" value="Recover Password" name="u_pass_recover" class="btn btn-success">
-
+                                    <input type="submit" value="Recover Password" name="send-reset-link" class="btn btn-success">
                                 </p>
                             </form>
                         </div>

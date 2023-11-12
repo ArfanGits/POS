@@ -5,21 +5,8 @@ include_once("admin/class/adminback.php");
 $obj = new adminback();
 
 
-if (isset($_SESSION['user_id'])) {
-    header("location:userprofile.php");
-}
+//$rec_msg = "Password Reset Link Sent to mail";
 
-
-
-if(isset($_GET['status'])){
-    if($_GET['status']='update'){
-        $update_id = $_GET['id'];
-}}
- 
-
-if(isset($_POST['u_pass_recover'])){
-    $update_msg = $obj->update_user_password($_POST);
-}
 ?>
 
 
@@ -61,9 +48,9 @@ include_once("includes/head.php");
             <div class="container">
                 <h2 class="text-center">Update Password</h2>
 
-                <h4 class="text-danger"> <?php
-                                            if (isset($update_msg )) {
-                                                echo $update_msg ;
+                <h4 class="text-success"> <?php
+                                            if (isset($rec_msg)) {
+                                                echo $rec_msg;
                                             }
                                             ?></h4>
                 <div class="row">
@@ -75,19 +62,16 @@ include_once("includes/head.php");
                     <!--Form Sign In-->
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="signin-container">
-                            <form action="" name="frm-login" method="POST">
+                            <form action="update_pass.php" name="frm-login" method="POST">
 
-                            <input type="hidden" name="update_user_id" value="<?php echo $update_id ?>">
-                               
                                 <p class="form-row">
                                     <label for="user_password">New Password:</label>
-                                    <input type="password" name="update_user_password" class="txt-input">
+                                    <input type="password" name="user_password" class="txt-input">
                                 </p>
-
-                              
+                                <input type="hidden" name="user_email" value='$_GET[user_email]'>
 
                                 <p class="wrap-btn">
-                                    <input type="submit" value="Update Password" name="u_pass_recover" class="btn btn-success">
+                                    <input type="submit" value="Update Password" name="update_password" class="btn btn-success">
 
                                 </p>
                             </form>

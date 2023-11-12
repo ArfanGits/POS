@@ -247,7 +247,6 @@ class  adminback
 
         $query = "UPDATE `users` SET `user_password`='$update_password' WHERE `user_id`=$update_id";
 
-
         if (mysqli_query($this->connection, $query)) {
             $update_mag = "You password updated successfully";
             return $update_mag;
