@@ -111,7 +111,7 @@
                 <a href="../index.php" target="_blank">
 
                     <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Visit Site</span>
+                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">View as User</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
 

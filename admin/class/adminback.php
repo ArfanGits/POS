@@ -254,4 +254,84 @@ class  adminback
             return "Please enter a correct email";
         }
     }
+
+    function add_catagory($data)
+    {
+        $ctg_name = $data['ctg_name'];
+        $ctg_des = $data['ctg_des'];
+        $ctg_status = $data['ctg_status'];
+
+        $query = "INSERT INTO `catagory`( `ctg_name`, `ctg_des`, `ctg_status`) VALUES ('$ctg_name','$ctg_des', $ctg_status)";
+
+        if (mysqli_query($this->connection, $query)) {
+            return "{$ctg_name} added as a catagory successfully!!";
+        } else {
+            return "Failed to add catagory";
+        }
+    }
+
+    function display_catagory()
+    {
+        $query = "SELECT * FROM `catagory`";
+
+        if (mysqli_query($this->connection, $query)) {
+            $ctg_info = mysqli_query($this->connection, $query);
+            return $ctg_info;
+        }
+    }
+
+    function p_display_catagory()
+    {
+        $query = "SELECT * FROM `catagory` WHERE ctg_status=1";
+
+        if (mysqli_query($this->connection, $query)) {
+            $ctg_info = mysqli_query($this->connection, $query);
+            return $ctg_info;
+        }
+    }
+
+    function catagory_published($id)
+    {
+        $query = "UPDATE `catagory` SET `ctg_status`= 1 WHERE ctg_id = $id";
+        mysqli_query($this->connection, $query);
+    }
+    function catagory_unpublished($id)
+    {
+        $query = "UPDATE `catagory` SET `ctg_status`= 0 WHERE ctg_id = $id";
+        mysqli_query($this->connection, $query);
+    }
+
+    function delete_catagory($id)
+    {
+        $query = "DELETE FROM `catagory` WHERE  ctg_id = $id";
+        mysqli_query($this->connection, $query);
+    }
+
+    function display_cataByID($id)
+    {
+        $query = "SELECT * FROM `catagory` WHERE ctg_id = $id";
+
+        if (mysqli_query($this->connection, $query)) {
+            $cata_info = mysqli_query($this->connection, $query);
+            return mysqli_fetch_assoc($cata_info);
+        }
+    }
+
+    function updata_catagory($data)
+    {
+        $u_ctg_id = $data['u_ctg_id'];
+        $u_ctg_name = $data['u_ctg_name'];
+        $u_ctg_des = $data['u_ctg_des'];
+        $u_ctg_status = $data['u_ctg_status'];
+
+        $query = "UPDATE `catagory` SET `ctg_name`='$u_ctg_name',`ctg_des`='$u_ctg_des',`ctg_status`= $u_ctg_status WHERE ctg_id =  $u_ctg_id";
+        if (mysqli_query($this->connection, $query)) {
+            return "{$u_ctg_name} Catagory Update successfully";
+        }
+    }
+
+
+
+
+
 }

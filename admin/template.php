@@ -48,6 +48,50 @@ include("includes/head.php")
 
                         <?php include_once("includes/sidenav.php") ?>
 
+                        <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
+
+                                    <div class="page-body">
+                                     
+        
+                                <?php 
+                                    if($views){
+                                        if($views=="dashboard"){
+                                            include ('views/dashborad_view.php');
+                                        }elseif($views=="add-cata"){
+                                            include ("views/add_cata_view.php");
+                                        }elseif($views=="manage-cata"){
+                                            include ("views/manage_cata_view.php");
+                                        }elseif($views=="add-product"){
+                                            include ("views/add_product_view.php");
+                                        }elseif($views=="manage-product"){
+                                            include ("views/manage_product_view.php");
+                                        }elseif($views=="add-user"){
+                                            include ("views/add_user_view.php");
+                                        }elseif($views=="manage-user"){
+                                            include ("views/manage_user_view.php");
+                                        }elseif($views=="edit_cata"){
+                                            include ("views/edit_cata_view.php");
+                                        }elseif($views=="edit_product"){
+                                            include ("views/edit_product_view.php");
+                                        }elseif($views=="manage_order"){
+                                            include ("views/manage_order_view.php");
+                                        }
+
+                                    }
+                                ?>
+
+
+                                    <div id="styleSelector">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
 
                     </div>
