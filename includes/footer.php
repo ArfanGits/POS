@@ -62,13 +62,13 @@
                                 <li>
                                     <p class="info-item">
                                         <i class="biolife-icon icon-phone"></i>
-                                        <b class="desc">Phone: +1 123 123 1234 ?></b>
+                                        <b class="desc">Phone: +1 123 123 1234</b>
                                     </p>
                                 </li>
                                 <li>
                                     <p class="info-item">
                                         <i class="biolife-icon icon-letter"></i>
-                                        <b class="desc">Email: minimart@hotmail.com ?></b>
+                                        <b class="desc">Email: minimart@hotmail.com</b>
                                     </p>
                                 </li>
                                 <li>
