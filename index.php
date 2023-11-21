@@ -47,6 +47,22 @@ include_once("includes/head.php");
             include_once("includes/slider_main.php")
             ?>
 
+            <!--Block 02: Banners-->
+
+            <?php
+            include_once("includes/banner_slider.php")
+            ?>
+
+            <!--Block 03: Product Tabs-->
+            <?php
+            include_once("includes/home_related_product.php")
+            ?>
+
+            <!--Block 07: Brands-->
+            <?php
+            include_once("includes/brands.php");
+            ?>
+
         </div>
     </div>
 

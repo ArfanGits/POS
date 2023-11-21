@@ -187,13 +187,15 @@ include_once("includes/head.php");
                                                             </div>
                                                         </td>
 
+                                                    </form>
 
-                                                        <td class="product-subtotal" data-title="Total">
-                                                            <div class="price price-contain">
-                                                                <ins><span class="price-amount subtotal"> <?php echo $value['pdt_price'] ?> </span></ins>
 
-                                                            </div>
-                                                        </td>
+                                                    <td class="product-subtotal" data-title="Total">
+                                                        <div class="price price-contain">
+                                                            <ins><span class="price-amount subtotal"> <?php echo $value['pdt_price'] ?> </span></ins>
+
+                                                        </div>
+                                                    </td>
                                                 </tr>
 
 
@@ -269,38 +271,18 @@ include_once("includes/head.php");
 
                     <div class="col-md-3">
                         <div class="shpcart-subtotal-block">
-                            <div class="subtotal-line">
-                                <b class="stt-name">Total <span class="sub">(<?php echo   $_SESSION['cart_pdt_number'] ?> Items)</span></b>
-                                <span class="stt-price" id="totalOfall"> <?php echo $_SESSION['subtotal']  ?> </span>
 
+                            <form autocomplete="off" action="" method="post">
 
-                            </div>
+                                <div class="subtotal-line">
+                                    <b class="stt-name">Total <span class="sub">(<?php echo   $_SESSION['cart_pdt_number'] ?> Items)</span></b>
+                                    <span class="stt-price" id="totalOfall"> <input type="hidden" name="price" id="price" value="<?php echo $_SESSION['subtotal']  ?>" /><?php echo $_SESSION['subtotal']  ?> </span>
+                                    
+                                </div>
 
-
-                            <div style="margin-top: 25px;">
-                                <b class="stt-name">Mobile <span class="sub"></span></b> <br>
-                                <input type="text" name="shipping_Mobile" class="form-control" value="<?php echo $_SESSION['mobile'] ?>" required>
-                            </div>
-
-                            <div style="margin-top: 25px;">
-                                <b class="stt-name">Shipping Address <span class="sub"></span></b> <br>
-                                <textarea name="shiping" class="form-control" id="" required> <?php echo $_SESSION['address'] ?> </textarea>
-                            </div>
-
-
-                            <div class="subtotal-line">
-                                <b class="stt-name"></b>
-                                <span class="stt-price" id="priceWithVat"></span>
-                            </div>
-
-
-
-                            <div class="btn-checkout">
-
-                                <input type="submit" class="btn btn-success btn-block btn-lg " value="Go for Payment" name="confirm_order">
-
-                            </div>
-
+                                <div class="btn-checkout">
+                                    <input type="submit" class="btn btn-success btn-block btn-lg " value="Go for Payment" class="buy_now">
+                                </div>
                             </form>
 
                             <p class="pickup-info"><b>Free Pickup</b> is available as soon as today More about shipping and pickup</p>
@@ -322,6 +304,28 @@ include_once("includes/head.php");
 
 
     <script>
+        $(document).ready(function() {
+            $(".buy_now").on('click', function(e) {
+                e.preventDefault();
+                var price = $(this).closest(".shpcart-subtotal-block").find("#price").attr("value");
+                var dt = '&price=' + price;
+                var url = 'http://localhost/POS/payment.php?' + dt;
+
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    success: function() {
+                        window.location.href = url;
+                    }
+                });
+
+
+            });
+
+        });
+
+
+
         var item_price = document.getElementsByClassName("pdt_price");
         var item_quantity = document.getElementsByClassName("quantity");
         var item_total = document.getElementsByClassName("subtotal");

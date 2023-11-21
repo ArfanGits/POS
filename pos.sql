@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2023 at 04:11 AM
+-- Generation Time: Nov 21, 2023 at 03:36 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -66,11 +66,11 @@ CREATE TABLE `catagory` (
 --
 
 INSERT INTO `catagory` (`ctg_id`, `ctg_name`, `ctg_des`, `ctg_status`) VALUES
-(2, 'Fruits', 'Fruits and vegetables contain important vitamins, minerals and plant chemicals.', 1),
-(3, 'Bakery', 'Bakery products, which include bread, eggs, cookies, and muffins.', 1),
-(4, 'Juice', 'Juice is a drink made from the extraction or pressing of the natural liquid.', 1),
-(5, 'Meat', 'Meat is defined as the flesh of animals (including fishes and chickens) used as food.', 1),
-(6, 'Vegetables', 'Vegetables are usually grouped according to the portion of the plant that is eaten.', 1);
+(1, 'Fruits', 'Fruits and vegetables contain important vitamins, minerals and plant chemicals.', 1),
+(2, 'Bakery', 'Bakery products, which include bread, eggs, cookies, and muffins.', 1),
+(3, 'Juice', 'Juice is a drink made from the extraction or pressing of the natural liquid.', 1),
+(4, 'Meat', 'Meat is defined as the flesh of animals (including fishes and chickens) used as food.', 1),
+(5, 'Vegetables', 'Vegetables are usually grouped according to the portion of the plant that is eaten.', 1);
 
 -- --------------------------------------------------------
 
@@ -94,28 +94,28 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`pdt_id`, `pdt_name`, `pdt_price`, `pdt_des`, `pdt_ctg`, `pdt_img`, `product_stock`, `pdt_status`) VALUES
-(1, ' Lemon (Kg)', 5, 'Lemon (Citrus limon (L.) Burm.) a yellow or pale yellow prolate fruit. ', 2, 'p-07.jpg', 10, 1),
-(2, 'Banana (Kg)', 4, 'A banana is a curved, yellow fruit with thick skin and soft sweet flesh. ', 2, '2901099.jpg', 30, 1),
-(3, ' Red Apple (kg)', 6, 'Red Delicious has a sweet but very mild flavor, somewhat reminiscent of slightly over-ripe melon. ', 2, '2901460.jpg', 20, 1),
-(4, 'Green Apple (Kg)', 6, 'The flavor of Green apples is extremely acidic, sometimes to the point of not having other taste, but generally refreshing.', 2, 'apple1.jpg', 15, 1),
-(5, 'Grapes (Kg)', 4, 'Grapes are fleshy, rounded fruits that grow in clusters made up of many fruits of greenish, yellowish, or purple skin.', 2, 'graps_white.jpg', 24, 1),
-(6, 'Avocado (Kg)', 3, 'An avocado is a bright green fruit with a large pit and dark leathery skin.', 2, 'p-01.jpg', 20, 1),
-(7, 'Egg', 8, 'Egg, the content of the hard-shelled reproductive body produced by a bird, is considered food.', 3, 'EGG.jpg', 30, 1),
-(8, 'Bread', 3, 'Bread is a staple food prepared from a dough of flour (usually wheat) and water, usually by baking.', 3, 'Sandwich-White.jpg', 5, 1),
-(9, 'Cookies', 3, 'Cookie, (from Dutch koekje, diminutive of koek, “cake”), primarily in the United States, is any of various small sweet cakes.', 3, 'Chocolate_Chip_Cookies.jpg', 25, 1),
-(10, 'Wheat Flour', 10, 'Flour is the product obtained by grinding wheat kernels or \"berries\". ', 3, 'Wheat_Flour_2.jpg', 9, 1),
-(11, 'Tropicana Mango', 5, 'TROPICANA Mango with Lime Take the taste of three bright fruit juices.', 4, 'Tropicana Mango.jpg', 10, 1),
-(12, 'Prime Blue Raspberry', 3, 'These hydrating drinks are made with 10% coconut water and contain electrolytes, B vitamins, and BCAAs.', 4, 'Prime Blue Raspberry.jpg', 10, 1),
-(13, 'Prime Lemon Lime', 10, 'Prime Lemon Lime by Logan Paul and KSI is a refreshing and delicious way to replenish your body with essential fluids and electrolytes.', 4, 'Prime Lemon Lime.jpg', 10, 1),
-(14, 'Prime Tropical Punch', 3, 'Prime has superior hydration with electrolytes, great taste, and only 20 calories.', 4, 'Prime Tropical Punch.jpg', 10, 1),
-(15, 'Chicken (Kg)', 10, 'Chickens are average-sized fowls, characterized by smaller heads, short beaks and wings, and a round body perched on featherless legs.', 5, 'chicken.jpg', 24, 1),
-(16, 'Lamb (Kg)', 14, 'Lamb, live sheep before the age of one year, and the flesh of such an animal. ', 5, 'Lamb.jpg', 6, 1),
-(17, 'Tilapia (Kg)', 30, 'Tilapia are a hardy, fast-growing fish, that can live up to ten years and reach ten pounds in weight. ', 5, 'Telapia.jpg', 5, 1),
-(18, 'Salmon (Kg)', 40, 'Salmons have sleek, streamlined bodies that typically change color throughout their lifetimes.', 5, 'Salmon.jpg', 12, 1),
-(19, 'Broccoli (Kg)', 4, 'Fresh broccoli should be dark green in color, with firm stalks and compact bud clusters.', 6, 'p-03.jpg', 27, 1),
-(20, 'Cauliflower (Kg)', 6, 'Cauliflowers are annual plants that reach about 0.5 metres (1.5 feet) tall and bear large rounded leaves that resemble collards.', 6, 'p-26.jpg', 19, 1),
-(21, 'Pumpkin (Kg)', 6, 'Pumpkins are often yellowish to orange in color, and they vary from oblate to globular to oblong.', 6, 'p-28.jpg', 18, 1),
-(22, 'Tomato (Kg)', 1, 'Tomatoe skin is a thin and fleshy tissue comprising the remainder of the fruit wall and the placenta.', 6, 'p-22.jpg', 25, 1);
+(1, ' Lemon (Kg)', 5, 'Lemon (Citrus limon (L.) Burm.) a yellow or pale yellow prolate fruit. ', 1, 'p-07.jpg', 10, 1),
+(2, 'Banana (Kg)', 4, 'A banana is a curved, yellow fruit with thick skin and soft sweet flesh. ', 1, '2901099.jpg', 30, 1),
+(3, ' Red Apple (kg)', 6, 'Red Delicious has a sweet but very mild flavor, somewhat reminiscent of slightly over-ripe melon. ', 1, '2901460.jpg', 20, 1),
+(4, 'Green Apple (Kg)', 6, 'The flavor of Green apples is extremely acidic, sometimes to the point of not having other taste, but generally refreshing.', 1, 'apple1.jpg', 15, 1),
+(5, 'Grapes (Kg)', 4, 'Grapes are fleshy, rounded fruits that grow in clusters made up of many fruits of greenish, yellowish, or purple skin.', 1, 'graps_white.jpg', 24, 1),
+(6, 'Avocado (Kg)', 3, 'An avocado is a bright green fruit with a large pit and dark leathery skin.', 1, 'p-01.jpg', 20, 1),
+(7, 'Egg', 8, 'Egg, the content of the hard-shelled reproductive body produced by a bird, is considered food.', 2, 'EGG.jpg', 30, 1),
+(8, 'Bread', 3, 'Bread is a staple food prepared from a dough of flour (usually wheat) and water, usually by baking.', 2, 'Sandwich-White.jpg', 5, 1),
+(9, 'Cookies', 3, 'Cookie, (from Dutch koekje, diminutive of koek, “cake”), primarily in the United States, is any of various small sweet cakes.', 2, 'Chocolate_Chip_Cookies.jpg', 25, 1),
+(10, 'Wheat Flour', 10, 'Flour is the product obtained by grinding wheat kernels or \"berries\". ', 2, 'Wheat_Flour_2.jpg', 9, 1),
+(11, 'Tropicana Mango', 5, 'TROPICANA Mango with Lime Take the taste of three bright fruit juices.', 3, 'Tropicana Mango.jpg', 10, 1),
+(12, 'Prime Blue Raspberry', 3, 'These hydrating drinks are made with 10% coconut water and contain electrolytes, B vitamins, and BCAAs.', 3, 'Prime Blue Raspberry.jpg', 10, 1),
+(13, 'Prime Lemon Lime', 10, 'Prime Lemon Lime by Logan Paul and KSI is a refreshing and delicious way to replenish your body with essential fluids and electrolytes.', 3, 'Prime Lemon Lime.jpg', 10, 1),
+(14, 'Prime Tropical Punch', 3, 'Prime has superior hydration with electrolytes, great taste, and only 20 calories.', 3, 'Prime Tropical Punch.jpg', 10, 1),
+(15, 'Chicken (Kg)', 10, 'Chickens are average-sized fowls, characterized by smaller heads, short beaks and wings, and a round body perched on featherless legs.', 4, 'chicken.jpg', 24, 1),
+(16, 'Lamb (Kg)', 14, 'Lamb, live sheep before the age of one year, and the flesh of such an animal. ', 4, 'Lamb.jpg', 6, 1),
+(17, 'Tilapia (Kg)', 30, 'Tilapia are a hardy, fast-growing fish, that can live up to ten years and reach ten pounds in weight. ', 4, 'Telapia.jpg', 5, 1),
+(18, 'Salmon (Kg)', 40, 'Salmons have sleek, streamlined bodies that typically change color throughout their lifetimes.', 4, 'Salmon.jpg', 12, 1),
+(19, 'Broccoli (Kg)', 4, 'Fresh broccoli should be dark green in color, with firm stalks and compact bud clusters.', 5, 'p-03.jpg', 27, 1),
+(20, 'Cauliflower (Kg)', 6, 'Cauliflowers are annual plants that reach about 0.5 metres (1.5 feet) tall and bear large rounded leaves that resemble collards.', 5, 'p-26.jpg', 19, 1),
+(21, 'Pumpkin (Kg)', 6, 'Pumpkins are often yellowish to orange in color, and they vary from oblate to globular to oblong.', 5, 'p-28.jpg', 18, 1),
+(22, 'Tomato (Kg)', 1, 'Tomatoe skin is a thin and fleshy tissue comprising the remainder of the fruit wall and the placenta.', 5, 'p-22.jpg', 25, 1);
 
 -- --------------------------------------------------------
 
