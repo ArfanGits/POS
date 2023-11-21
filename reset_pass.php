@@ -1,3 +1,4 @@
+
 <?php
 
 require("connection.php");
@@ -29,7 +30,7 @@ function sendMail($user_email, $reset_token)
         $mail->addAddress($user_email);     //Add a recipient
 
         //Content
-        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->isHTML(true);                                 //Set email format to HTML
         $mail->Subject = 'Password reset link from TEAM-18';
         $mail->Body    = "We got a request from you to reset your password! <br>
             Click the link below: <br>
@@ -47,7 +48,6 @@ function sendMail($user_email, $reset_token)
 if (isset($_POST['send-reset-link'])) {
     $query = "SELECT * FROM `users` WHERE `user_email` ='$_POST[user_email]'";
     $result = mysqli_query($conn, $query);
-    // $rec_msg = "";
 
     if ($result) {
         if (mysqli_num_rows($result) == 1) {
@@ -56,9 +56,6 @@ if (isset($_POST['send-reset-link'])) {
             $date = date("Y-m-d");
             $query = "UPDATE `users` SET `reset_token` ='$reset_token', `reset_token_expire`='$date' WHERE `user_email`='$_POST[user_email]'";
             if (mysqli_query($conn, $query) && sendMail($_POST['user_email'], $reset_token)) {
-                // $rec_msg = "Password Reset Link Sent to mail";
-                // header('location:user_password_update.php');
-                // return $rec_msg;
                 echo "
                     <script>
                     alert('Password Reset Link Sent to mail');
@@ -66,26 +63,18 @@ if (isset($_POST['send-reset-link'])) {
                     </script>
                     ";
             } else {
-                // $rec_msg = "Server down! try again later";
-
-                // return $rec_msg;
                 echo "
                     <script>
                     alert('Server down! try again later');
-                    
                     </script>
              ";
                 header('location:user_password_recover.php');
             }
         }
     } else {
-        // $rec_msg = "Email not found";
-        // header('location:user_password_recover.php');
-        // return $rec_msg;
         echo "
                 <script>
                 alert('Email not found');
-                
                 </script>
             ";
         header('location:user_password_recover.php');

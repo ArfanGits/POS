@@ -21,7 +21,7 @@ class  adminback
     {
         $admin_name = $data['admin_name'];
         $admin_email = $data['admin_email'];
-        $admin_pass = md5($data['admin_pass']);
+        $admin_pass = $data['admin_pass'];
 
 
         $admin_check = "SELECT * FROM `admin` WHERE admin_name='$admin_name' or admin_email='$admin_email'";
@@ -46,7 +46,7 @@ class  adminback
     function admin_login($data)
     {
         $admin_email = $data["admin_email"];
-        $admin_pass = md5($data['admin_pass']);
+        $admin_pass = $data['admin_pass'];
 
         $query = "SELECT * FROM `admin` WHERE admin_email = '$admin_email' AND admin_pass = '$admin_pass'";
 
@@ -157,7 +157,7 @@ class  adminback
         $user_firstname = $data['user_firstname'];
         $user_lastname = $data['user_lastname'];
         $user_email = $data['user_email'];
-        $user_password = md5($data['user_password']);
+        $user_password = $data['user_password'];
         $user_mobile = $data['user_mobile'];
         $user_address = $data['user_address'];
 
@@ -185,7 +185,7 @@ class  adminback
     function user_login($data)
     {
         $user_email = $_POST['user_email'];
-        $user_password = md5($_POST['user_password']);
+        $user_password = $_POST['user_password'];
 
         $query = "SELECT * FROM `users` WHERE `user_email`='$user_email' AND `user_password`='$user_password'";
 

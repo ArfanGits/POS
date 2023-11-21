@@ -1,135 +1,131 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
 
-session_start();
-include_once("admin/class/adminback.php");
-$obj = new adminback();
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Update</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: Georgia;
+        }
 
+        form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f0f0f0;
+            width: 350px;
+            border-radius: 5px;
+            padding: 20px 25px 30px 25px;
+        }
 
-//$rec_msg = "Password Reset Link Sent to mail";
+        form h3 {
+            margin-bottom: 15px;
+            color: #30475e;
+        }
 
-?>
+        form input {
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid #30475e;
+            border-radius: 0;
+            padding: 5px 0;
+            font-weight: 550;
+            font-size: 14px;
+            outline: none;
+        }
 
+        form button {
+            font-weight: 550;
+            font-style: 15px;
+            color: white;
+            background-color: #30475e;
+            padding: 4px 10px;
+            border: none;
+            outline: none;
+        }
 
-<?php
-include_once("includes/head.php");
-?>
+        form button:hover {
+            box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
 
-<body class="biolife-body">
-    <!-- Preloader -->
-
-    <?php
-    include_once("includes/preloader.php");
-    ?>
-
-    <!-- HEADER -->
-    <header id="header" class="header-area style-01 layout-03">
-
-        <?php
-        include_once("includes/header_top.php");
-        ?>
-
-        <?php
-        include_once("includes/header_middle.php");
-        ?>
-
-        <?php
-        include_once("includes/header_bottom.php");
-        ?>
-
-    </header>
-
-    <!-- Page Contain -->
-    <div class="page-contain">
-
-        <!-- Main content -->
-        <div id="main-content" class="main-content">
-
-
-            <div class="container">
-                <h2 class="text-center">Update Password</h2>
-
-                <h4 class="text-success"> <?php
-                                            if (isset($rec_msg)) {
-                                                echo $rec_msg;
-                                            }
-                                            ?></h4>
-                <div class="row">
-
-
-
-
-
-                    <!--Form Sign In-->
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="signin-container">
-                            <form action="update_pass.php" name="frm-login" method="POST">
-
-                                <p class="form-row">
-                                    <label for="user_password">New Password:</label>
-                                    <input type="password" name="user_password" class="txt-input">
-                                </p>
-                                <input type="hidden" name="user_email" value='$_GET[user_email]'>
-
-                                <p class="wrap-btn">
-                                    <input type="submit" value="Update Password" name="update_password" class="btn btn-success">
-
-                                </p>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!--Go to Register form-->
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="register-in-container">
-                            <div class="intro">
-                                <h4 class="box-title">New Customer?</h4>
-                                <p class="sub-title">Create an account with us and you’ll be able to:</p>
-                                <ul class="lis">
-                                    <li>Check out faster</li>
-                                    <li>Save multiple shipping anddesses</li>
-                                    <li>Access your order history</li>
-                                    <li>Track new orders</li>
-                                    <li>Save items to your Wishlist</li>
-                                </ul>
-                                <a href="user_register.php" class="btn btn-bold">Create an account</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-
-
-
-        </div>
-    </div>
-
-    <!-- FOOTER -->
+<body>
 
     <?php
-    include_once("includes/footer.php");
-    ?>
 
-    <!--Footer For Mobile-->
-    <?php
-    include_once("includes/mobile_footer.php");
+    require("connection.php");
+
+    if (isset($_GET['user_email']) && isset($_GET['reset_token'])) {
+        date_default_timezone_set('America/Toronto');
+        $date = date("Y-m-d");
+        $query = "SELECT * from `users` WHERE `user_email`='$_GET[user_email]' AND `reset_token`='$_GET[reset_token]' AND `reset_token_expire`='$date'";
+        $result = mysqli_query($conn, $query);
+        if ($result) {
+            if (mysqli_num_rows($result) == 1) {
+                echo "
+            <form method='POST'>
+                <h3>Create New Password</h3>
+                <input type='password' placeholder='New Password' name='user_password'>
+                <button type='submit' name='update_password'>UPDATE</button>
+                <input type='hidden' name='user_email' value='$_GET[user_email]'>
+            </form>
+            ";
+            } else {
+                echo "
+            <script>
+                alert('Invalid or Expired Link');
+                window.location.href='user_password_recover.php';
+            </script>
+        ";
+            }
+        } else {
+            echo "
+                <script>
+                    alert('Server Down! try again later');
+                    window.location.href='user_password_recover.php';
+                </script>
+            ";
+        }
+    }
+
     ?>
 
     <?php
-    include_once("includes/mobile_global.php")
+
+    if (isset($_POST['update_password'])) {
+        $pass = $_POST['user_password'];
+        $update = "UPDATE `users` SET `user_password`='$pass', `reset_token`=NULL, `reset_token_expire`=NULL WHERE `user_email`='$_POST[user_email]'";
+        if (mysqli_query($conn, $update)) {
+            echo "
+                <script>
+                    alert('Password Updated Successfully');
+                    window.location.href='user_login.php';
+                </script>
+            ";
+        } else {
+            echo "
+                <script>
+                    alert('Server Down! try again later');
+                    window.location.href='user_password_update.php';
+                </script>
+            ";
+        }
+    }
+
     ?>
 
 
-    <!-- Scroll Top Button -->
-    <a class="btn-scroll-top"><i class="biolife-icon icon-left-arrow"></i></a>
-
-    <?php
-    include_once("includes/script.php")
-    ?>
 </body>
 
 </html>

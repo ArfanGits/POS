@@ -6,7 +6,6 @@ $obj = new adminback();
 
 
 
-
 ?>
 
 
@@ -67,7 +66,6 @@ include_once("includes/head.php");
                                     <label for="email">Email</label>
                                     <input type="email" id="fid-name" name="user_email" class="txt-input">
                                 </p>
-
                                 <p class="wrap-btn">
                                     <input type="submit" value="Recover Password" name="send-reset-link" class="btn btn-success">
                                 </p>

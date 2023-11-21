@@ -2,7 +2,6 @@
 
 require("connection.php");
 
-
 if (isset($_GET['user_email']) && isset($_GET['reset_token'])) {
     date_default_timezone_set('America/Toronto');
     $date = date("Y-m-d");

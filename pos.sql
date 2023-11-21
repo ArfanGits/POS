@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2023 at 03:36 AM
+-- Generation Time: Nov 21, 2023 at 05:46 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -46,7 +46,8 @@ INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_pass`, `res
 (3, 'signtest', 'sign@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL),
 (4, 'team18Q', 'team18q@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL),
 (5, '', '', 'd41d8cd98f00b204e9800998ecf8427e', NULL, NULL),
-(6, 'jiraq', 'jiraq@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL);
+(6, 'jiraq', 'jiraq@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL),
+(7, 'team18test', 'alpharfan07@gmail.com', '123456789', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -167,7 +168,7 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_firstname`, `user_lastname`, 
 (4, 'jira', ' jira', ' soft', 'jira@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1231231234, '525 Kathleen St', NULL, NULL, '2023-10-27 22:28:22', '2023-10-27 22:28:22'),
 (5, 'new', ' new', ' user', 'newuser@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1234567896, 'lu', NULL, NULL, '2023-11-09 01:22:32', '2023-11-09 01:22:32'),
 (6, 'test22', ' test', ' 12', 'test22@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1231231234, 'downtown', NULL, NULL, '2023-11-09 01:39:31', '2023-11-09 01:39:31'),
-(7, 'Arfan', ' Arfan', ' A Khan', 'alpharfan07@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1231231234, 'Laurentian University.', '937f4365ecc4de3db67f9d6951d4caac', '2023-11-11', '2023-11-11 22:53:15', '2023-11-11 22:53:15');
+(7, 'Arfan', ' Arfan', ' A Khan', 'alpharfan07@gmail.com', '123456789', 1231231234, 'Laurentian University.', NULL, NULL, '2023-11-11 22:53:15', '2023-11-11 22:53:15');
 
 -- --------------------------------------------------------
 
@@ -214,7 +215,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `catagory`
