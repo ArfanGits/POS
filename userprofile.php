@@ -22,7 +22,7 @@ if (empty($userid)) {
 }
 
 if (empty($_SESSION['cart'])) {
-    header("location:userprofile.php");
+    header("location:index.php");
 }
 
 if (isset($_POST['remove_product'])) {
