@@ -22,7 +22,7 @@ if (empty($userid)) {
 }
 
 if (empty($_SESSION['cart'])) {
-    header("location:exist_order.php");
+    header("location:userprofile.php");
 }
 
 if (isset($_POST['remove_product'])) {
@@ -277,7 +277,7 @@ include_once("includes/head.php");
                                 <div class="subtotal-line">
                                     <b class="stt-name">Total <span class="sub">(<?php echo   $_SESSION['cart_pdt_number'] ?> Items)</span></b>
                                     <span class="stt-price" id="totalOfall"> <input type="hidden" name="price" id="price" value="<?php echo $_SESSION['subtotal']  ?>" /><?php echo $_SESSION['subtotal']  ?> </span>
-                                    
+
                                 </div>
 
                                 <div class="btn-checkout">
