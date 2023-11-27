@@ -10,10 +10,6 @@ while ($data = mysqli_fetch_assoc($cata_info)) {
     $cataDatas[] = $data;
 }
 
-// if (isset($_POST['user_login_btn'])) {
-//     $logmsg = $obj->user_login($_POST);
-// }
-
 $userid = $_SESSION['user_id'];
 $username = $_SESSION['username'];
 
