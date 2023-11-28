@@ -36,6 +36,10 @@ if (isset($_GET['logout'])) {
     }
 }
 
+if (isset($_POST['confirm_payment_btn'])) {
+    $reg_msg =  $obj->confirm_payment($_POST);
+}
+
 
 
 
@@ -82,6 +86,12 @@ include_once("includes/head.php");
 
 
             <div class="container">
+
+                <h4>
+                    <?php if (isset($reg_msg)) {
+                        echo $reg_msg;
+                    } ?>
+                </h4>
 
 
                 <div class="row">
@@ -137,7 +147,6 @@ include_once("includes/head.php");
                                                 $_SESSION['subtotal'] =  $_SESSION['subtotal'] + $value['pdt_price'];
                                                 $_SESSION['cart_pdt_number']++;
                                                 $order_names = $value['pdt_name'] . "<br> " . $order_names;
-
 
 
                                         ?>
@@ -268,16 +277,35 @@ include_once("includes/head.php");
                     <div class="col-md-3">
                         <div class="shpcart-subtotal-block">
 
-                            <form autocomplete="off" action="" method="post">
+                            <form action="" method="POST">
 
                                 <div class="subtotal-line">
                                     <b class="stt-name">Total <span class="sub">(<?php echo   $_SESSION['cart_pdt_number'] ?> Items)</span></b>
-                                    <span class="stt-price" id="totalOfall"> <input type="hidden" name="price" id="price" value="<?php echo $_SESSION['subtotal']  ?>" /><?php echo $_SESSION['subtotal']  ?> </span>
+                                    <span class="stt-price" id="totalOfall"> <?php echo $_SESSION['subtotal']  ?> CAD$</span>
+                                </div>
+                                <br>
+                                <br>
+                                <hr>
+                                <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id'] ?>">
+                                <input type="hidden" name="product_name" value="<?php echo $order_names ?>">
+                                <input type="hidden" name="product_item" value="<?php echo $_SESSION['cart_pdt_number'] ?>">
+                                <input type="hidden" name="amount" id="totalOfall" value="<?php echo $_SESSION['subtotal'] ?>">
 
+                                <div class="subtotal-line">
+                                    <center><b class="stt-name">Cash Payment </span></b></center>
+                                </div>
+                                <div style="margin-top: 25px;">
+                                    <b class="stt-name">Mobile <span class="sub"></span></b> <br>
+                                    <input type="text" name="shipping_mobile" class="form-control" required>
+                                </div>
+
+                                <div style="margin-top: 25px;">
+                                    <b class="stt-name">Shipping Address <span class="sub"></span></b> <br>
+                                    <textarea name="shipping_address" class="form-control" required> </textarea>
                                 </div>
 
                                 <div class="btn-checkout">
-                                    <input type="submit" class="btn btn-success btn-block btn-lg " value="Go for Payment" class="buy_now">
+                                    <input type="submit" class="btn btn-success btn-block btn-lg " value="Confirm Payment" class="buy_now" name="confirm_payment_btn">
                                 </div>
                             </form>
 

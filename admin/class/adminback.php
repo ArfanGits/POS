@@ -559,4 +559,42 @@ class  adminback
             return $search_query;
         }
     }
+
+    function confirm_payment($data)
+    {
+        $user_id = $data['user_id'];
+        $product_name = $data['product_name'];
+        $product_item = $data['product_item'];
+        $amount = $data['amount'];
+        $shipping_mobile = $data['shipping_mobile'];
+        $shipping_address = $data['shipping_address'];
+
+        $query = "INSERT INTO `orders`( `user_id`,`product_name`,`product_item`, `amount`,`shipping_mobile`,`shipping_address`) VALUES ('$user_id','$product_name','$product_item','$amount','$shipping_mobile','$shipping_address')";
+
+        if (mysqli_query($this->connection, $query)) {
+            echo "
+                    <script>
+                    alert('Payment Done');
+                    window.location.href='exit_order.php';
+                    </script>
+                    ";
+        } else {
+            echo "
+                    <script>
+                    alert('Payment not Completed');
+                    window.location.href='userprofile.php';
+                    </script>
+                    ";
+        }
+    }
+
+    function order_details_by_id($user_id)
+    {
+        $query = "SELECT * FROM `orders` WHERE `user_id`=$user_id ORDER BY `order_time` DESC";
+        if (mysqli_query($this->connection, $query)) {
+            $order_query = mysqli_query($this->connection, $query);
+            return $order_query;
+        }
+    }
+
 }
