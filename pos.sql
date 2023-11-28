@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2023 at 05:46 AM
+-- Generation Time: Nov 28, 2023 at 04:25 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -72,6 +72,34 @@ INSERT INTO `catagory` (`ctg_id`, `ctg_name`, `ctg_des`, `ctg_status`) VALUES
 (3, 'Juice', 'Juice is a drink made from the extraction or pressing of the natural liquid.', 1),
 (4, 'Meat', 'Meat is defined as the flesh of animals (including fishes and chickens) used as food.', 1),
 (5, 'Vegetables', 'Vegetables are usually grouped according to the portion of the plant that is eaten.', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `order_id` int(10) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `product_name` varchar(200) NOT NULL,
+  `product_item` varchar(255) NOT NULL,
+  `amount` int(255) NOT NULL,
+  `shipping_mobile` int(11) NOT NULL,
+  `shipping_address` varchar(255) NOT NULL,
+  `order_time` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `user_id`, `product_name`, `product_item`, `amount`, `shipping_mobile`, `shipping_address`, `order_time`) VALUES
+(1, 8, 'Green Apple (Kg)<br> Banana (Kg)<br> ', '2', 10, 1231231234, ' Laurentian', '2023-11-28 02:55:05'),
+(2, 8, 'Tropicana Mango<br> Banana (Kg)<br> ', '2', 9, 1231231234, ' Laurentian University', '2023-11-28 03:00:55'),
+(3, 8, 'Tropicana Mango<br> ', '1', 5, 1231231234, ' Laurentian CIty', '2023-11-28 03:14:46'),
+(4, 8, ' Red Apple (kg)<br> ', '1', 6, 1231231234, ' Laurentian', '2023-11-28 03:18:41'),
+(5, 8, 'Green Apple (Kg)<br> ', '1', 6, 1231231234, ' lu', '2023-11-28 03:23:59');
 
 -- --------------------------------------------------------
 
@@ -168,7 +196,8 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_firstname`, `user_lastname`, 
 (4, 'jira', ' jira', ' soft', 'jira@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1231231234, '525 Kathleen St', NULL, NULL, '2023-10-27 22:28:22', '2023-10-27 22:28:22'),
 (5, 'new', ' new', ' user', 'newuser@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1234567896, 'lu', NULL, NULL, '2023-11-09 01:22:32', '2023-11-09 01:22:32'),
 (6, 'test22', ' test', ' 12', 'test22@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1231231234, 'downtown', NULL, NULL, '2023-11-09 01:39:31', '2023-11-09 01:39:31'),
-(7, 'Arfan', ' Arfan', ' A Khan', 'alpharfan07@gmail.com', '123456789', 1231231234, 'Laurentian University.', NULL, NULL, '2023-11-11 22:53:15', '2023-11-11 22:53:15');
+(7, 'Arfan', ' Arfan', ' A Khan', 'alpharfan07@gmail.com', '123456789', 1231231234, 'Laurentian University.', NULL, NULL, '2023-11-11 22:53:15', '2023-11-11 22:53:15'),
+(8, 'ArfanAKhan', ' test', ' wenew', 'newmail@gmail.com', '123456', 1231231234, 'laurentian', NULL, NULL, '2023-11-27 00:29:09', '2023-11-27 00:29:09');
 
 -- --------------------------------------------------------
 
@@ -194,6 +223,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `catagory`
   ADD PRIMARY KEY (`ctg_id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`order_id`);
 
 --
 -- Indexes for table `products`
@@ -224,6 +259,12 @@ ALTER TABLE `catagory`
   MODIFY `ctg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
@@ -233,7 +274,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

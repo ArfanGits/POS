@@ -12,7 +12,7 @@ if (isset($_POST['user_login_btn'])) {
 if (isset($_SESSION['user_id'])) {
     $userId = $_SESSION['user_id'];
     if ($userId) {
-        header('location:userprofile.php');
+        header('location:exit_order.php');
     }
 }
 

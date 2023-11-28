@@ -578,6 +578,7 @@ class  adminback
                     window.location.href='exit_order.php';
                     </script>
                     ";
+                    unset($_SESSION['cart']);
         } else {
             echo "
                     <script>

@@ -18,7 +18,7 @@ if (empty($userid)) {
 }
 
 if (empty($_SESSION['cart'])) {
-    header("location:index.php");
+    header("location:exit_order.php");
 }
 
 if (isset($_POST['remove_product'])) {

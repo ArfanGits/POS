@@ -94,6 +94,7 @@ include_once("includes/head.php");
                                         <tr>
                                             <th class="product-name">Order Id</th>
                                             <th class="product-price">Products</th>
+                                            <th class="product-subtotal">Total Items</th>
                                             <th class="product-subtotal">Amount</th>
                                             <th class="product-subtotal">Order Status</th>
                                             <th class="product-subtotal">Placing Time</th>
