@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2023 at 04:25 AM
+-- Generation Time: Nov 28, 2023 at 06:20 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -52,6 +52,24 @@ INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_pass`, `res
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `all_order_info`
+-- (See below for the actual view)
+--
+CREATE TABLE `all_order_info` (
+`order_id` int(10)
+,`product_name` varchar(200)
+,`product_item` varchar(255)
+,`amount` int(255)
+,`customer_name` varchar(255)
+,`shipping_mobile` int(11)
+,`shipping_address` varchar(255)
+,`order_time` timestamp
+,`order_date` date
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `catagory`
 --
 
@@ -87,19 +105,20 @@ CREATE TABLE `orders` (
   `amount` int(255) NOT NULL,
   `shipping_mobile` int(11) NOT NULL,
   `shipping_address` varchar(255) NOT NULL,
-  `order_time` timestamp NULL DEFAULT current_timestamp()
+  `order_time` timestamp NULL DEFAULT current_timestamp(),
+  `order_date` date DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `user_id`, `product_name`, `product_item`, `amount`, `shipping_mobile`, `shipping_address`, `order_time`) VALUES
-(1, 8, 'Green Apple (Kg)<br> Banana (Kg)<br> ', '2', 10, 1231231234, ' Laurentian', '2023-11-28 02:55:05'),
-(2, 8, 'Tropicana Mango<br> Banana (Kg)<br> ', '2', 9, 1231231234, ' Laurentian University', '2023-11-28 03:00:55'),
-(3, 8, 'Tropicana Mango<br> ', '1', 5, 1231231234, ' Laurentian CIty', '2023-11-28 03:14:46'),
-(4, 8, ' Red Apple (kg)<br> ', '1', 6, 1231231234, ' Laurentian', '2023-11-28 03:18:41'),
-(5, 8, 'Green Apple (Kg)<br> ', '1', 6, 1231231234, ' lu', '2023-11-28 03:23:59');
+INSERT INTO `orders` (`order_id`, `user_id`, `product_name`, `product_item`, `amount`, `shipping_mobile`, `shipping_address`, `order_time`, `order_date`) VALUES
+(1, 8, 'Green Apple (Kg)<br> Banana (Kg)<br> ', '2', 10, 1231231234, ' Laurentian', '2023-11-28 02:55:05', '2023-11-27'),
+(2, 8, 'Tropicana Mango<br> Banana (Kg)<br> ', '2', 9, 1231231234, ' Laurentian University', '2023-11-28 03:00:55', '2023-11-27'),
+(3, 8, 'Tropicana Mango<br> ', '1', 5, 1231231234, ' Laurentian CIty', '2023-11-28 03:14:46', '2023-11-27'),
+(4, 8, ' Red Apple (kg)<br> ', '1', 6, 1231231234, ' Laurentian', '2023-11-28 03:18:41', '2023-11-27'),
+(5, 8, 'Green Apple (Kg)<br> ', '1', 6, 1231231234, ' lu', '2023-11-28 03:23:59', '2023-11-27');
 
 -- --------------------------------------------------------
 
@@ -198,6 +217,15 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_firstname`, `user_lastname`, 
 (6, 'test22', ' test', ' 12', 'test22@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1231231234, 'downtown', NULL, NULL, '2023-11-09 01:39:31', '2023-11-09 01:39:31'),
 (7, 'Arfan', ' Arfan', ' A Khan', 'alpharfan07@gmail.com', '123456789', 1231231234, 'Laurentian University.', NULL, NULL, '2023-11-11 22:53:15', '2023-11-11 22:53:15'),
 (8, 'ArfanAKhan', ' test', ' wenew', 'newmail@gmail.com', '123456', 1231231234, 'laurentian', NULL, NULL, '2023-11-27 00:29:09', '2023-11-27 00:29:09');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `all_order_info`
+--
+DROP TABLE IF EXISTS `all_order_info`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `all_order_info`  AS SELECT `orders`.`order_id` AS `order_id`, `orders`.`product_name` AS `product_name`, `orders`.`product_item` AS `product_item`, `orders`.`amount` AS `amount`, `users`.`user_firstname` AS `customer_name`, `orders`.`shipping_mobile` AS `shipping_mobile`, `orders`.`shipping_address` AS `shipping_address`, `orders`.`order_time` AS `order_time`, `orders`.`order_date` AS `order_date` FROM (`orders` join `users`) WHERE `users`.`user_id` = `orders`.`user_id` ;
 
 -- --------------------------------------------------------
 

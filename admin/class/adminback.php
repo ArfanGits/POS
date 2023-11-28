@@ -578,7 +578,7 @@ class  adminback
                     window.location.href='exit_order.php';
                     </script>
                     ";
-                    unset($_SESSION['cart']);
+            unset($_SESSION['cart']);
         } else {
             echo "
                     <script>
@@ -598,4 +598,14 @@ class  adminback
         }
     }
 
+
+    function all_order_info()
+    {
+        $query = "SELECT * FROM `all_order_info` ORDER BY `order_time` DESC";
+
+        if (mysqli_query($this->connection, $query)) {
+            $all_order_info = mysqli_query($this->connection, $query);
+            return $all_order_info;
+        }
+    }
 }
